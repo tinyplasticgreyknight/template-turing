@@ -1,5 +1,4 @@
-#include "test-state.h"
-#include "state.h"
+#include "test-helper.h"
 #include "state.h"
 
 using namespace Turing;

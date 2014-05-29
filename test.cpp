@@ -1,3 +1,4 @@
+#include "test-helper.h"
 #include "tests-all.h"
 #include <iostream>
 

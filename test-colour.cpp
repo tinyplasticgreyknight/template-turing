@@ -1,5 +1,4 @@
-#include "test-colour.h"
-#include "colour.h"
+#include "test-helper.h"
 #include "colour.h"
 
 using namespace Turing;

@@ -1,6 +1,6 @@
-#include "test-llist.h"
-#include "test-state.h"
-#include "test-colour.h"
+extern void register_tests_llist(void);
+extern void register_tests_state(void);
+extern void register_tests_colour(void);
 
 void register_tests(void) {
 	register_tests_llist();
