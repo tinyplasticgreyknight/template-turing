@@ -18,7 +18,13 @@ namespace List {
 
 	template<class A, class D> struct cons : public mcar<A>, public mcdr<D> {
 		static std::string to_str(void) {
-			return "(" + cons::car::to_str() + " . " + cons::cdr::to_str() + ")";
+			return "(" + A::to_str() + " . " + D::to_str() + ")";
+		}
+	};
+
+	template<class E> struct infinite : public mcar<E>, public mcdr<infinite<E> > {
+		static std::string to_str(void) {
+			return "(" + E::to_str() + "...)";
 		}
 	};
 }

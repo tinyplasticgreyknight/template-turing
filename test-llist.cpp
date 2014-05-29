@@ -29,6 +29,21 @@ namespace test_llist {
 	void str_proper(void) {
 		assert_eq("(3 . (4 . NIL))", (cons<state<3>, cons<state<4>, nil> >::to_str()) );
 	}
+	void car_infinite(void) {
+		assert_eq(3, infinite<state<3> >::car::state_ );
+	}
+	void cadr_infinite(void) {
+		assert_eq(3, infinite<state<3> >::cdr::car::state_ );
+	}
+	void caddr_infinite(void) {
+		assert_eq(3, infinite<state<3> >::cdr::cdr::car::state_ );
+	}
+	void cadddr_infinite(void) {
+		assert_eq(3, infinite<state<3> >::cdr::cdr::cdr::car::state_ );
+	}
+	void str_infinite(void) {
+		assert_eq("(3...)", infinite<state<3> >::to_str());
+	}
 
 	void register_tests(void) {
 		TEST(extract_car);
@@ -38,6 +53,11 @@ namespace test_llist {
 		TEST(str_justcar);
 		TEST(str_justcdr);
 		TEST(str_proper);
+		TEST(car_infinite);
+		TEST(cadr_infinite);
+		TEST(caddr_infinite);
+		TEST(cadddr_infinite);
+		TEST(str_infinite);
 	}
 
 }
