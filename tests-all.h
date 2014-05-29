@@ -1,13 +1,18 @@
-extern void register_tests_llist(void);
-extern void register_tests_state(void);
-extern void register_tests_colour(void);
-extern void register_tests_machine(void);
-extern void register_tests_rule(void);
+#define DEFCAT(nm) namespace test_##nm{void register_tests(void);}
+#define RUNCAT(nm) test_##nm::register_tests()
+
+DEFCAT(llist);
+DEFCAT(state);
+DEFCAT(colour);
+DEFCAT(machine);
+DEFCAT(rule);
+DEFCAT(apply);
 
 void register_tests(void) {
-	register_tests_llist();
-	register_tests_state();
-	register_tests_colour();
-	register_tests_machine();
-	register_tests_rule();
+	RUNCAT(llist);
+	RUNCAT(state);
+	RUNCAT(colour);
+	RUNCAT(machine);
+	RUNCAT(rule);
+	RUNCAT(apply);
 }

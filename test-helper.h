@@ -7,24 +7,24 @@
 #include <iostream>
 
 template<class A, class B>
-void assert_typeeq(A a, B b, std::string message="") {
+void assert_typeeq(A expect, B actual, std::string message="") {
 	std::stringstream ss;
 	ss << "Types are not equal: " << message;
 	throw ss.str();
 }
 
 template<class A>
-void assert_typeeq(A a, A b, std::string message="") {
+void assert_typeeq(A expect, A actual, std::string message="") {
 	return; // ok
 }
 
 template<class A, class B>
-void assert_eq(A a, B b, std::string message="") {
-	if(a == b) return;
+void assert_eq(A expect, B actual, std::string message="") {
+	if(expect == actual) return;
 	std::stringstream ss;
 	ss << "Not equal: " << message << std::endl;
-	ss << "\tA: " << a << std::endl;
-	ss << "\tB: " << b << std::endl;
+	ss << "\texpect: " << expect << std::endl;
+	ss << "\tactual: " << actual << std::endl;
 	throw ss.str();
 }
 
@@ -42,6 +42,10 @@ public:
 		this->shortname = shortname;
 		this->name = (category + "::" + shortname);
 		this->func = func;
+	}
+
+	void run(void) const {
+		(*func)();
 	}
 };
 
@@ -63,17 +67,26 @@ public:
 		}
 	}
 
+	static void report_ok(const Testcase& testcase, std::ostream& output) {
+		output << "ok   " << testcase.name << std::endl;
+	}
+
+	static void report_fail(const Testcase& testcase, std::ostream& output, std::string err) {
+		output << "FAIL " << testcase.name << std::endl;
+		output << "----" << std::endl;
+		output << err << std::endl;
+		output << "----" << std::endl;
+	}
+
 	static void run(unsigned int& num_failed, unsigned int& num_executed, std::ostream& output) {
-		std::string result;
 		for(std::vector<Testcase>::const_iterator iter = cases.begin(); iter != cases.end(); iter++) {
-			result = "FAIL";
 			try {
-				(*(iter->func))();
-				result = "ok  ";
+				iter->run();
+				report_ok(*iter, output);
 			} catch(std::string& ex) {
 				num_failed++;
+				report_fail(*iter, output, ex);
 			}
-			output << result << " " << (iter->name) << std::endl;
 			num_executed++;
 		}
 	}
