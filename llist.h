@@ -1,5 +1,9 @@
+#include <string>
+
 namespace List {
-	struct nil;
+	struct nil {
+		static std::string to_str(void) { return "NIL"; }
+	};
 
 	template<class A> struct mcar {
 		typedef A car;
@@ -10,5 +14,8 @@ namespace List {
 	};
 
 	template<class A, class D> struct cons : mcar<A>, mcdr<D> {
+		static std::string to_str(void) {
+			return "(" + cons::car::to_str() + " . " + cons::cdr::to_str() + ")";
+		}
 	};
 }

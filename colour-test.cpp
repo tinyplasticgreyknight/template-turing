@@ -1,15 +1,12 @@
 #include "colour.h"
-
-#include <iostream>
-#include <cassert>
+#include "test-helper.h"
 
 using namespace Turing;
 
 int main(void) {
-	assert('r' == colour<'r'>::colour_);
-	assert(' ' == EMPTY::colour_);
-	assert('g' == colour<'g'>::colour_);
+	assert_eq('r', colour<'r'>::colour_);
+	assert_eq(' ', EMPTY::colour_);
+	assert_eq('g', colour<'g'>::colour_);
 
-	std::cout << "Everything is okay." << std::endl;
-	return 0;
+	return test_ok();
 }

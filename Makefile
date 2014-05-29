@@ -2,15 +2,16 @@ CC=g++
 CFLAGS=-std=c++11
 
 test: llist-test state-test colour-test
+	./llist-test
+	./state-test
+	./colour-test
 
-llist-test: llist.h state.h utils.h llist-test.cpp
-	$(CC) $(CFLAGS) $+ -o $@
-	./$@
 
-state-test: state.h utils.h state-test.cpp
+llist-test: llist-test.cpp test-helper.h llist.h state.h utils.h
 	$(CC) $(CFLAGS) $+ -o $@
-	./$@
 
-colour-test: colour.h utils.h colour-test.cpp
+state-test: state-test.cpp test-helper.h state.h utils.h
 	$(CC) $(CFLAGS) $+ -o $@
-	./$@
+
+colour-test: colour-test.cpp test-helper.h colour.h utils.h
+	$(CC) $(CFLAGS) $+ -o $@
