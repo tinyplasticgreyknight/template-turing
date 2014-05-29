@@ -1,6 +1,7 @@
 #include "test-helper.h"
 #include "apply.h"
 #include "rule.h"
+#include "ruleset.h"
 #include "state.h"
 #include "colour.h"
 #include "machine.h"
@@ -45,11 +46,39 @@ namespace test_apply {
 			>::to_str() );
 	}
 
+	void ruleset_double(void) {
+		assert_eq("<machine state=5, cell=b>", apply_rule<
+			machine<state<3>, colour<'r'>>,
+			ruleset<
+				rule<state<3>, colour<'r'>, state<4>, colour<'g'>>,
+				ruleset<
+					rule<state<4>, colour<'g'>, state<5>, colour<'b'>>,
+					List::nil
+					>
+				>
+			>::to_str() );
+	}
+
+	void ruleset_order(void) {
+		assert_eq("<machine state=4, cell=g>", apply_rule<
+			machine<state<3>, colour<'r'>>,
+			ruleset<
+				rule<state<4>, colour<'g'>, state<5>, colour<'b'>>,
+				ruleset<
+					rule<state<3>, colour<'r'>, state<4>, colour<'g'>>,
+					List::nil
+					>
+				>
+			>::to_str() );
+	}
+
 	void register_tests(void) {
 		TEST(identity);
 		TEST(not_applicable);
 		TEST(juststate);
 		TEST(justcolour);
 		TEST(change_both);
+		TEST(ruleset_double);
+		TEST(ruleset_order);
 	}
 }

@@ -7,6 +7,7 @@ DEFCAT(colour);
 DEFCAT(machine);
 DEFCAT(rule);
 DEFCAT(apply);
+DEFCAT(ruleset);
 
 void register_tests(void) {
 	RUNCAT(llist);
@@ -15,4 +16,5 @@ void register_tests(void) {
 	RUNCAT(machine);
 	RUNCAT(rule);
 	RUNCAT(apply);
+	RUNCAT(ruleset);
 }

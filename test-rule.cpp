@@ -2,7 +2,6 @@
 #include "rule.h"
 #include "state.h"
 #include "colour.h"
-#include "machine.h"
 
 using namespace Turing;
 

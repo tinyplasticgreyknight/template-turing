@@ -1,3 +1,6 @@
+#ifndef H_RULE
+#define H_RULE
+
 #include "utils.h"
 #include <string>
 #include <sstream>
@@ -14,3 +17,5 @@ namespace Turing {
 		}
 	};
 }
+
+#endif

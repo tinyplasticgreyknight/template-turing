@@ -16,7 +16,7 @@ namespace List {
 		typedef D cdr;
 	};
 
-	template<class A, class D> struct cons : mcar<A>, mcdr<D> {
+	template<class A, class D> struct cons : public mcar<A>, public mcdr<D> {
 		static std::string to_str(void) {
 			return "(" + cons::car::to_str() + " . " + cons::cdr::to_str() + ")";
 		}
