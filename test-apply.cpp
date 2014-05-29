@@ -88,6 +88,19 @@ namespace test_apply {
 			>::to_str() );
 	}
 
+	void move_on_infinite(void) {
+		assert_eq("<machine state=1, cell= , tape-left=( ...), tape-right=(! . (! . NIL))>", apply_rule<
+			machine<state<1>, infinite<EMPTY>, EMPTY, nil>,
+			ruleset<
+				rule<state<1>, EMPTY, state<1>, colour<'!'>, go_left>,
+				ruleset<
+					rule<state<1>, EMPTY, state<1>, colour<'!'>, go_left>,
+					List::nil
+				>
+			>
+			>::to_str() );
+	}
+
 	void register_tests(void) {
 		TEST(identity);
 		TEST(not_applicable);
@@ -98,5 +111,6 @@ namespace test_apply {
 		TEST(change_all);
 		TEST(ruleset_double);
 		TEST(ruleset_order);
+		TEST(move_on_infinite);
 	}
 }
