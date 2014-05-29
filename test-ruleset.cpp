@@ -3,6 +3,7 @@
 #include "rule.h"
 #include "state.h"
 #include "colour.h"
+#include "direction.h"
 
 using namespace Turing;
 
@@ -10,7 +11,7 @@ using namespace Turing;
 
 namespace test_ruleset {
 	void single(void) {
-		assert_eq("(<rule 2 r -- 3 g> . NIL)", ruleset<rule<state<2>, colour<'r'>, state<3>, colour<'g'>>, List::nil>::to_str());
+		assert_eq("(<rule 2 r -- 3 g; -o-> . NIL)", ruleset<rule<state<2>, colour<'r'>, state<3>, colour<'g'>, stay_put>, List::nil>::to_str());
 	}
 
 	void register_tests(void) {

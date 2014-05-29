@@ -1,6 +1,9 @@
 #ifndef H_TTURING_UTILS
 #define H_TTURING_UTILS
 
+#include <string>
+#include <sstream>
+
 #define WITH_STATE(N) static const unsigned int state_ = N;
 #define COPY_STATE(X) WITH_STATE(X::state_)
 
