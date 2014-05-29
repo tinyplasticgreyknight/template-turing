@@ -8,62 +8,63 @@
 #include "machine.h"
 
 using namespace Turing;
+using namespace List;
 
 #define TEST(x) TestCases::add("apply", #x, x)
 
 namespace test_apply {
 	void identity(void) {
-		assert_eq("<machine state=3, cell=r>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=3, cell=r, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<3>, colour<'r'>, stay_put>
 			>::to_str() );
 	}
 
 	void not_applicable(void) {
-		assert_eq("<machine state=3, cell=r>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=3, cell=r, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<4>, colour<'a'>, state<5>, colour<'b'>, stay_put>
 			>::to_str() );
 	}
 
 	void juststate(void) {
-		assert_eq("<machine state=4, cell=r>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=4, cell=r, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<4>, colour<'r'>, stay_put>
 			>::to_str() );
 	}
 
 	void justcolour(void) {
-		assert_eq("<machine state=3, cell=g>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=3, cell=g, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<3>, colour<'g'>, stay_put>
 			>::to_str() );
 	}
 
 	void change_both(void) {
-		assert_eq("<machine state=4, cell=g>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=4, cell=g, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<4>, colour<'g'>, stay_put>
 			>::to_str() );
 	}
 
 	void justdir(void) {
-		assert_eq("<machine state=3, cell=r>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=3, cell=r, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<3>, colour<'r'>, go_left>
 			>::to_str() );
 	}
 
 	void change_all(void) {
-		assert_eq("<machine state=4, cell=g>", apply_rule<
-			machine<state<3>, colour<'r'> >,
+		assert_eq("<machine state=4, cell=g, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<4>, colour<'g'>, go_left>
 			>::to_str() );
 	}
 
 	void ruleset_double(void) {
-		assert_eq("<machine state=5, cell=b>", apply_rule<
-			machine<state<3>, colour<'r'>>,
+		assert_eq("<machine state=5, cell=b, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			ruleset<
 				rule<state<3>, colour<'r'>, state<4>, colour<'g'>, stay_put>,
 				ruleset<
@@ -75,8 +76,8 @@ namespace test_apply {
 	}
 
 	void ruleset_order(void) {
-		assert_eq("<machine state=4, cell=g>", apply_rule<
-			machine<state<3>, colour<'r'>>,
+		assert_eq("<machine state=4, cell=g, tape-left=NIL, tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, nil>,
 			ruleset<
 				rule<state<4>, colour<'g'>, state<5>, colour<'b'>, stay_put>,
 				ruleset<
