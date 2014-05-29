@@ -1,6 +1,7 @@
 CC=g++
 CFLAGS=-std=c++11
 TESTFILES=$(shell find . -iname 'test-*.cpp')
+ALLFILES=$(shell find . -iname '*.h' -or -iname '*.cpp')
 TESTEXE=runtests
 
 clean:
@@ -12,5 +13,5 @@ spotless: clean
 test: $(TESTEXE)
 	./$(TESTEXE)
 
-$(TESTEXE): $(TESTFILES)
+$(TESTEXE): $(ALLFILES)
 	$(CC) $(CFLAGS) test.cpp $(TESTFILES) -o $@
