@@ -1,3 +1,6 @@
+#ifndef H_COLOUR
+#define H_COLOUR
+
 #include "utils.h"
 #include <string>
 #include <sstream>
@@ -14,3 +17,5 @@ namespace Turing {
 
 	typedef colour<' '> EMPTY;
 }
+
+#endif

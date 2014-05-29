@@ -1,3 +1,6 @@
+#ifndef H_LLIST
+#define H_LLIST
+
 #include <string>
 
 namespace List {
@@ -19,3 +22,5 @@ namespace List {
 		}
 	};
 }
+
+#endif

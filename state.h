@@ -1,3 +1,6 @@
+#ifndef H_STATE
+#define H_STATE
+
 #include "utils.h"
 #include <string>
 #include <sstream>
@@ -14,3 +17,5 @@ namespace Turing {
 
 	typedef state<0> HALT;
 }
+
+#endif
