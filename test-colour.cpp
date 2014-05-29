@@ -10,7 +10,7 @@ namespace test_colour {
 		assert_eq('r', colour<'r'>::colour_ );
 	}
 	void empty(void) {
-		assert_eq(' ', EMPTY::colour_ );
+		assert_eq('~', EMPTY::colour_ );
 	}
 	void valueG(void) {
 		assert_eq('g', colour<'g'>::colour_ );

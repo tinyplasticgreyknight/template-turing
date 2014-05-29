@@ -89,7 +89,7 @@ namespace test_apply {
 	}
 
 	void move_on_infinite(void) {
-		assert_eq("<machine state=1, cell= , tape-left=( ...), tape-right=(! . (! . NIL))>", apply_rule<
+		assert_eq("<machine state=1, cell=~, tape-left=(~...), tape-right=(! . (! . NIL))>", apply_rule<
 			machine<state<1>, infinite<EMPTY>, EMPTY, nil>,
 			ruleset<
 				rule<state<1>, EMPTY, state<1>, colour<'!'>, go_left>,

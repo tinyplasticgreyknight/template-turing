@@ -12,12 +12,12 @@ using namespace List;
 namespace test_machine {
 	void blank(void) {
 		assert_eq(0, (machine<HALT, nil, EMPTY, nil>::cur_state::state_) );
-		assert_eq(' ', (machine<HALT, nil, EMPTY, nil>::cell::colour_) );
+		assert_eq('~', (machine<HALT, nil, EMPTY, nil>::cell::colour_) );
 	}
 
 	void juststate(void) {
 		assert_eq(3, (machine<state<3>, nil, EMPTY, nil>::cur_state::state_) );
-		assert_eq(' ', (machine<state<3>, nil, EMPTY, nil>::cell::colour_) );
+		assert_eq('~', (machine<state<3>, nil, EMPTY, nil>::cell::colour_) );
 	}
 
 	void justcolour(void) {

@@ -15,7 +15,7 @@ namespace Turing {
 		}
 	};
 
-	typedef colour<' '> EMPTY;
+	typedef colour<'~'> EMPTY;
 }
 
 #endif
