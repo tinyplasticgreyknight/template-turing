@@ -1,3 +1,6 @@
+#ifndef H_TESTS_ALL
+#define H_TESTS_ALL
+
 #define DEFCAT(nm) namespace test_##nm{void register_tests(void);}
 #define RUNCAT(nm) test_##nm::register_tests()
 
@@ -18,3 +21,5 @@ void register_tests(void) {
 	RUNCAT(apply);
 	RUNCAT(ruleset);
 }
+
+#endif
