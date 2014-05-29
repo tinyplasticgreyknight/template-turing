@@ -49,16 +49,16 @@ namespace test_apply {
 	}
 
 	void justdir(void) {
-		assert_eq("<machine state=3, cell=r, tape-left=NIL, tape-right=NIL>", apply_rule<
-			machine<state<3>, nil, colour<'r'>, nil>,
+		assert_eq("<machine state=3, cell=@, tape-left=NIL, tape-right=(r . NIL)>", apply_rule<
+			machine<state<3>, cons<colour<'@'>, nil>, colour<'r'>, nil>,
 			rule<state<3>, colour<'r'>, state<3>, colour<'r'>, go_left>
 			>::to_str() );
 	}
 
 	void change_all(void) {
-		assert_eq("<machine state=4, cell=g, tape-left=NIL, tape-right=NIL>", apply_rule<
-			machine<state<3>, nil, colour<'r'>, nil>,
-			rule<state<3>, colour<'r'>, state<4>, colour<'g'>, go_left>
+		assert_eq("<machine state=4, cell=@, tape-left=(g . NIL), tape-right=NIL>", apply_rule<
+			machine<state<3>, nil, colour<'r'>, cons<colour<'@'>, nil> >,
+			rule<state<3>, colour<'r'>, state<4>, colour<'g'>, go_right>
 			>::to_str() );
 	}
 
