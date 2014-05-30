@@ -1,11 +1,7 @@
 #ifndef H_MACHINE
 #define H_MACHINE
 
-#include "utils.h"
-#include "llist.h"
-
 #include <string>
-#include <sstream>
 
 namespace Turing {
 	template<class S, class TL, class C, class TR> struct machine {

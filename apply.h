@@ -1,7 +1,6 @@
 #ifndef H_APPLY
 #define H_APPLY
 
-#include "utils.h"
 #include "machine.h"
 #include "ruleset.h"
 #include "direction.h"

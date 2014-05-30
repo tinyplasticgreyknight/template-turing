@@ -1,7 +1,6 @@
 #ifndef H_STATE
 #define H_STATE
 
-#include "utils.h"
 #include <string>
 #include <sstream>
 
@@ -12,7 +11,8 @@ namespace Turing {
 	} HALT;
 
 	template<unsigned int S> struct state {
-		WITH_STATE(S)
+		static const unsigned int state_ = S;
+
 		static std::string to_str(void) {
 			std::stringstream ss;
 			ss << state_;

@@ -1,7 +1,7 @@
 #ifndef H_DIRECTION
 #define H_DIRECTION
 
-#include "utils.h"
+#include <string>
 
 namespace Turing {
 	struct stay_put {

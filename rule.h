@@ -1,7 +1,7 @@
 #ifndef H_RULE
 #define H_RULE
 
-#include "utils.h"
+#include <string>
 
 namespace Turing {
 	template<class S0, class C0, class S1, class C1, class D> struct rule {
