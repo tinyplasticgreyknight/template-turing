@@ -6,6 +6,10 @@
 #include <sstream>
 
 namespace Turing {
+	typedef struct {
+		static std::string to_str(void) { return "H"; }
+	} HALT;
+
 	template<unsigned int S> struct state {
 		WITH_STATE(S)
 		static std::string to_str(void) {
@@ -14,8 +18,6 @@ namespace Turing {
 			return ss.str();
 		}
 	};
-
-	typedef state<0> HALT;
 }
 
 #endif

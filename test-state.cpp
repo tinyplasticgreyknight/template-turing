@@ -10,7 +10,7 @@ namespace test_state {
 		assert_eq(3, state<3>::state_ );
 	}
 	void halt(void) {
-		assert_eq(0, HALT::state_ );
+		assert_eq("H", HALT::to_str() );
 	}
 	void value4(void) {
 		assert_eq(4, state<4>::state_ );

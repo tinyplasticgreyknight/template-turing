@@ -10,7 +10,7 @@ using namespace Turing;
 
 namespace test_rule {
 	void halted(void) {
-		assert_eq("<rule 0 ~ -- 0 ~; -o->", rule<HALT, EMPTY, HALT, EMPTY, stay_put>::to_str());
+		assert_eq("<rule H ~ -- H ~; -o->", rule<HALT, EMPTY, HALT, EMPTY, stay_put>::to_str());
 	}
 
 	void complex(void) {

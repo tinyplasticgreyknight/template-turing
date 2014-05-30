@@ -11,7 +11,7 @@ using namespace List;
 
 namespace test_machine {
 	void blank(void) {
-		assert_eq(0, (machine<HALT, nil, EMPTY, nil>::cur_state::state_) );
+		assert_eq("H", (machine<HALT, nil, EMPTY, nil>::cur_state::to_str()) );
 		assert_eq('~', (machine<HALT, nil, EMPTY, nil>::cell::colour_) );
 	}
 
@@ -21,7 +21,7 @@ namespace test_machine {
 	}
 
 	void justcolour(void) {
-		assert_eq(0, (machine<HALT, nil, colour<'r'>, nil>::cur_state::state_) );
+		assert_eq("H", (machine<HALT, nil, colour<'r'>, nil>::cur_state::to_str()) );
 		assert_eq('r', (machine<HALT, nil, colour<'r'>, nil>::cell::colour_) );
 	}
 
