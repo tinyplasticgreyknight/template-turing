@@ -40,6 +40,11 @@ Stuart Golodetz wrote some good articles on *Functional Programming Using C++ Te
 * [part 1](http://accu.org/index.php/journals/1422)
 * [part 2](http://accu.org/index.php/journals/1616)
 
+Here are some Turing-complete systems implemented in Haskell's typesystem.  As far as I can tell both of these need certain compiler extensions and Haskell's typesystem *isn't* Turing-complete by itself: I'm not sure what computational class the standard typesystem is.  I would welcome input from a Haskell expert on this.
+
+* [Turing machine](http://www.lochan.org/keith/publications/undec.html) (needs hugs)
+* [SK combinator calculus](http://www.haskell.org/haskellwiki/Type_SK) (needs GHC)
+
 ## Contact
 * [e-mail](mailto:tinyplasticgreyknight@yahoo.com)
 * google+: [Grey Knight](https://plus.google.com/u/0/116271131160818845979)
