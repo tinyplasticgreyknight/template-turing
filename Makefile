@@ -1,8 +1,8 @@
 CC=g++
-CFLAGS=-std=c++11
-TESTFILES=$(shell find . -iname 'test-*.cpp')
+CFLAGS=-std=c++11 -I.
+TESTFILES=$(shell find tests -iname 'test-*.cpp')
 DEMOFILES=$(shell find . -iname 'demo-*.cpp')
-ALLFILES=$(shell find . -iname '*.h' -or -iname '*.cpp')
+HDRFILES=$(shell find . -maxdepth 1 -iname '*.h')
 TESTEXE=bin/runtests
 DEMOEXE=$(addprefix bin/, $(notdir $(basename $(DEMOFILES))) )
 
@@ -22,5 +22,5 @@ spotless: clean
 test: $(TESTEXE)
 	./$(TESTEXE)
 
-$(TESTEXE): $(ALLFILES)
-	$(CC) $(CFLAGS) -o $@ test.cpp $(TESTFILES)
+$(TESTEXE): $(HDRFILES) $(TESTFILES)
+	$(CC) $(CFLAGS) -o $@ tests/test.cpp $(TESTFILES)
