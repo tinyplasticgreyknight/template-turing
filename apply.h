@@ -5,6 +5,7 @@
 #include "machine.h"
 #include "ruleset.h"
 #include "direction.h"
+#include "state.h"
 
 namespace Turing {
 	template<class M, class D> struct move_head;
@@ -31,6 +32,15 @@ namespace Turing {
 
 	template<class M, class R> struct apply_rule<M, ruleset<R, List::nil> > : public apply_rule<M, R> {
 	};
+
+
+	template<class M, class Rs> struct fully_apply_rule;
+
+	template<class S, class M, class Rs> struct check_fully_applied : public fully_apply_rule<apply_rule<M, Rs>, Rs> {};
+
+	template<class M, class Rs> struct check_fully_applied<HALT, M, Rs> : public M {};
+
+	template<class M, class Rs> struct fully_apply_rule : public check_fully_applied<typename M::cur_state, M, Rs> {};
 }
 
 #endif
