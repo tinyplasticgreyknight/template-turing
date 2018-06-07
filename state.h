@@ -5,7 +5,7 @@
 #include <sstream>
 
 namespace Turing {
-	typedef struct {
+	typedef struct s_halt {
 		static const unsigned int state_ = static_cast<unsigned int>(-1);
 		static std::string to_str(void) { return "H"; }
 	} HALT;
